@@ -1,37 +1,24 @@
-# Example: Adding Engine Coolant Temperature Parameter
-# Based on the screenshot provided
-
-# New parameter to add
 parameters:
-  - id: 8  # Use next available ID
-    field_name: "Engine Coolant Temperature"
-    reserved_enum_val: 11
-    description: "Temperature of the engine's coolant"
-    unit: "Double - Celsius"
-    reason_added: "Engine Insight"
-    protobuf_field: "engine_coolant_temperature_c"
-    protocol_reference: "CTMP_protocols"
+  - id: 9
+    field_name: "Axle Speed - Front Right"
+    reserved_enum_val: 42
+    description: "Speed of the front right wheel"
+    unit: "Double - km/h (kilometers per hour)"
+    reason_added: "Safety"
+    protobuf_field: "axle_speed_front_right_kph"
+    protocol_reference: "ASFR_protocols"
 
-# Related breadcrumb field
 breadcrumb_fields:
-  - parameter_id: 8
-    breadcrumb_link: "https://docs.motive.com/breadcrumb/veh_eng_temp"
-    note: "\"full\" breadcrumb only - Temperature monitoring for engine health and cooling system diagnostics"
+  - parameter_id: 9
+    breadcrumb_link: "https://docs.motive.com/breadcrumb/axle_speed_front_right"
+    note: "Front right wheel speed monitoring for vehicle dynamics and safety systems"
 
-# Related VG5 field
 vg5_fields:
-  - parameter_id: 8
-    vg5_link: "https://docs.motive.com/vg5/engine_coolant_temp_c"
+  - parameter_id: 9
+    vg5_link: "https://docs.motive.com/vg5/axle_speed_front_right_kph"
 
-# Related abbreviation metric
 abbr_metrics:
-  - parameter_id: 8
-    abbr_value: "CTMP"
-    abbr_link: "https://docs.motive.com/abbr/CTMP"
-    metrics_link: "https://redash.motive.com/dashboard/engine-coolant-temperature"
-
-# Instructions:
-# 1. Update the ID to the next available number in your parameters.yaml
-# 2. Ensure the protocol_reference matches a protocol group in protocols.yaml
-# 3. Validate with: python cli/validate.py
-# 4. If valid, add to your main parameters.yaml file
+  - parameter_id: 9
+    abbr_value: "ASFR"
+    abbr_link: "https://docs.motive.com/abbr/ASFR"
+    metrics_link: "https://redash.motive.com/dashboard/axle-speed-front-right"

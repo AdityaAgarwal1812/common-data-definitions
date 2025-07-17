@@ -1,56 +1,18 @@
-# Example: Adding Engine Coolant Temperature Protocols
-# Based on the screenshot provided
-
-# New protocol group to add
 protocol_groups:
-  - id: 8  # Use next available ID
-    group_name: "CTMP_protocols"
-    description: "Engine Coolant Temperature Protocol Definitions"
-    parameter_reference: "Engine Coolant Temperature"
+  - id: 7
+    group_name: "ASFR_protocols"
+    description: "Axle Speed Front Right Protocol Definitions"
+    parameter_reference: "Axle Speed - Front Right"
 
-# Related protocols
 protocols:
-  # J1939 Protocol
-  - group_id: 8
-    abbr: "CTMP"
+  - group_id: 7
+    abbr: "ASFR"
     protocol_standard: "J1939"
-    pgn_pid: "65262"
-    spn: "110"
-    precision: "1 °C/bit"
-    spec_range: "-40 to 210 °C"
-    max_valid_val: "-"
-    units: "°C"
-    description: "Temperature of liquid found in engine cooling system"
+    pgn_pid: "65134"
+    spn: "1593"
+    precision: "1/256 km/h per bit"
+    spec_range: "0 to 250.996 km/h"
+    max_valid_val: "250.996"
+    units: "km/h"
+    description: "High resolution measurement of the speed of the right wheel on the front axle."
     states: null
-
-  # J1587 Protocol
-  - group_id: 8
-    abbr: "CTMP"
-    protocol_standard: "J1587"
-    pgn_pid: "110"
-    spn: "N/A"
-    precision: "1.0 °F/bit"
-    spec_range: "0.0 to 255.0 °F"
-    max_valid_val: "-"
-    units: "°F"
-    description: "The temperature of liquid found in engine cooling system"
-    states: null
-
-  # J1979 Protocol
-  - group_id: 8
-    abbr: "CTMP"
-    protocol_standard: "J1979"
-    pgn_pid: "0x05/0xF405"
-    spn: "N/A"
-    precision: "(100/255) °C/bit"
-    spec_range: "-40 °C to 215 °C"
-    max_valid_val: "214.6"
-    units: "°C"
-    description: "ECT shall display engine coolant temperature derived from an engine coolant temperature sensor or a cylinder head temperature sensor"
-    states: null
-
-# Instructions:
-# 1. Update the IDs to the next available numbers in your protocols.yaml
-# 2. Ensure the parameter_reference matches a parameter field_name in parameters.yaml
-# 3. Validate with: python cli/validate.py
-# 4. If valid, add to your main protocols.yaml file

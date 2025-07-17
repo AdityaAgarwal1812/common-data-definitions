@@ -131,6 +131,14 @@ parameters:
   reason_added: Engine Insight
   protobuf_field: engine_coolant_temperature_c
   protocol_reference: CTMP_protocols
+- id: 9
+  field_name: Axle Speed - Front Right
+  reserved_enum_val: 42
+  description: Speed of the front right wheel
+  unit: Double - km/h (kilometers per hour)
+  reason_added: Safety
+  protobuf_field: axle_speed_front_right_kph
+  protocol_reference: ASFR_protocols
 breadcrumb_fields:
 - parameter_id: 1
   breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_spd
@@ -154,6 +162,9 @@ breadcrumb_fields:
   breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_temp
   note: '"full" breadcrumb only - Temperature monitoring for engine health and cooling
     system diagnostics'
+- parameter_id: 9
+  breadcrumb_link: https://docs.motive.com/breadcrumb/axle_speed_front_right
+  note: Front right wheel speed monitoring for vehicle dynamics and safety systems
 vg5_fields:
 - parameter_id: 1
   vg5_link: https://docs.motive.com/vg5/engine_speed_rpm
@@ -173,6 +184,8 @@ vg5_fields:
   vg5_link: https://docs.motive.com/vg5/tire_pressure_psi
 - parameter_id: 8
   vg5_link: https://docs.motive.com/vg5/engine_coolant_temp_c
+- parameter_id: 9
+  vg5_link: https://docs.motive.com/vg5/axle_speed_front_right_kph
 abbr_metrics:
 - parameter_id: 1
   abbr_value: ESPD
@@ -210,3 +223,7 @@ abbr_metrics:
   abbr_value: CTMP
   abbr_link: https://docs.motive.com/abbr/CTMP
   metrics_link: https://redash.motive.com/dashboard/engine-coolant-temperature
+- parameter_id: 9
+  abbr_value: ASFR
+  abbr_link: https://docs.motive.com/abbr/ASFR
+  metrics_link: https://redash.motive.com/dashboard/axle-speed-front-right

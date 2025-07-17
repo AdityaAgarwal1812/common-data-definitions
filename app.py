@@ -386,6 +386,27 @@ class ProtocolGroupDetail(Resource):
 # NEW ENHANCED API ROUTES (Added functionality)
 # ============================================================================
 
+
+def load_example_parameter_file():
+    """Load and validate example parameter file"""
+    try:
+        with open('data/examples/new_parameter_example.yaml', 'r', encoding='utf-8') as f:
+            example_data = yaml.safe_load(f)
+        return example_data
+    except Exception as e:
+        return None
+
+def load_example_protocol_file():
+    """Load and validate example protocol file"""
+    try:
+        with open('data/examples/new_protocol_example.yaml', 'r', encoding='utf-8') as f:
+            example_data = yaml.safe_load(f)
+        return example_data
+    except Exception as e:
+        return None
+
+
+        
 @api.route('/validate')
 class ValidateData(Resource):
     def get(self):
@@ -402,6 +423,8 @@ class ValidateData(Resource):
             }
         except Exception as e:
             return {'error': f'Validation failed: {str(e)}'}, 500
+
+
 
 @api.route('/add-parameter-from-file')
 class AddParameterFromFile(Resource):

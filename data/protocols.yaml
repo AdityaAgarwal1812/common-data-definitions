@@ -75,6 +75,10 @@ protocol_groups:
   group_name: TIRE_protocols
   description: Tire Pressure Protocol Definitions
   parameter_reference: Tire Pressure
+- id: 7
+  group_name: ASFR_protocols
+  description: Axle Speed Front Right Protocol Definitions
+  parameter_reference: Axle Speed - Front Right
 protocols:
 - group_id: 1
   abbr: ESPD
@@ -230,4 +234,16 @@ protocols:
   max_valid_val: '-'
   units: kPa
   description: Tire pressure sensor reading
+  states: null
+- group_id: 7
+  abbr: ASFR
+  protocol_standard: J1939
+  pgn_pid: '65134'
+  spn: '1593'
+  precision: 1/256 km/h per bit
+  spec_range: 0 to 250.996 km/h
+  max_valid_val: '250.996'
+  units: km/h
+  description: High resolution measurement of the speed of the right wheel on the
+    front axle.
   states: null
