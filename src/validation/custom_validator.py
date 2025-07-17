@@ -21,7 +21,9 @@ class CustomValidator:
             'Safety', 
             'Engine Insight', 
             'Value add for customer',
-            'Safety_Monitoring'
+            'Safety_Monitoring',
+            'Engine Insight',
+            'Fleet Management'
         ]
     
     def validate_parameters_business_logic(self, yaml_file_path):
