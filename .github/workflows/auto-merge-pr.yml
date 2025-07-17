@@ -1,0 +1,36 @@
+name: Auto-Merge Parameter/Protocol After PR Approval
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  auto-merge-to-main-files:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install Dependencies
+      run: |
+        pip install pyyaml
+    
+    - name: Merge Pending Files to Main YAML
+      run: |
+        python .github/scripts/merge_pending_files.py
+    
+    - name: Commit Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add data/parameters.yaml data/protocols.yaml
+        git commit -m "Auto-merge: Add approved parameter/protocol from PR" || exit 0
+        git push
