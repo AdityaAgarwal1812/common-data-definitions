@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vehicle Protocols Schema",
+  "description": "JSON Schema for validating vehicle protocol definitions",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"},
+        "description": {"type": "string"},
+        "last_updated": {"type": "string"},
+        "maintainer": {"type": "string"},
+        "standards_covered": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["J1939", "J1587", "J1979"]
+          }
+        }
+      },
+      "required": ["version", "maintainer"]
+    },
+    "protocol_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Unique protocol group identifier"
+          },
+          "group_name": {
+            "type": "string",
+            "pattern": "^[A-Z_]+_protocols$",
+            "description": "Protocol group name ending with '_protocols'"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Description of the protocol group"
+          },
+          "parameter_reference": {
+            "type": "string",
+            "minLength": 3,
+            "description": "Reference to parameter field_name in parameters.yaml"
+          }
+        },
+        "required": ["id", "group_name", "description", "parameter_reference"],
+        "additionalProperties": false
+      }
+    },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "group_id": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Reference to protocol_groups ID"
+          },
+          "abbr": {
+            "type": "string",
+            "pattern": "^[A-Z]{2,6}$",
+            "description": "2-6 uppercase letters abbreviation"
+          },
+          "protocol_standard": {
+            "type": "string",
+            "enum": ["J1939", "J1587", "J1979"],
+            "description": "Protocol standard specification"
+          },
+          "pgn_pid": {
+            "type": "string",
+            "minLength": 1,
+            "description": "PGN (J1939) or PID (J1587/J1979) identifier"
+          },
+          "spn": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "null"}
+            ],
+            "description": "SPN identifier or null if not applicable"
+          },
+          "precision": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Precision specification"
+          },
+          "spec_range": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Specification range"
+          },
+          "max_valid_val": {
+            "type": "string",
+            "description": "Maximum valid value"
+          },
+          "units": {
+            "type": "string",
+            "description": "Units of measurement"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Protocol description"
+          },
+          "states": {
+            "oneOf": [
+              {"type": "string"},
+              {"type": "null"}
+            ],
+            "description": "State definitions or null if not applicable"
+          }
+        },
+        "required": [
+          "group_id",
+          "abbr", 
+          "protocol_standard",
+          "pgn_pid",
+          "precision",
+          "spec_range",
+          "units",
+          "description"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["protocol_groups", "protocols"],
+  "additionalProperties": true
+}

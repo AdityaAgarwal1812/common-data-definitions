@@ -1,0 +1,212 @@
+metadata:
+  version: 1.0.0
+  description: Vehicle parameter definitions - separate from protocols
+  last_updated: '2025-07-09'
+  maintainer: Telematics Team
+database_schema:
+  parameters:
+    fields:
+    - name: id
+      type: INTEGER PRIMARY KEY AUTOINCREMENT
+    - name: field_name
+      type: VARCHAR(255) UNIQUE NOT NULL
+    - name: reserved_enum_val
+      type: INTEGER
+    - name: description
+      type: TEXT
+    - name: unit
+      type: TEXT
+    - name: reason_added
+      type: VARCHAR(255)
+    - name: protobuf_field
+      type: VARCHAR(255)
+    - name: protocol_reference
+      type: VARCHAR(255)
+    - name: created_at
+      type: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  breadcrumb_fields:
+    fields:
+    - name: id
+      type: INTEGER PRIMARY KEY AUTOINCREMENT
+    - name: parameter_id
+      type: INTEGER
+    - name: breadcrumb_link
+      type: TEXT
+    - name: note
+      type: TEXT
+    - name: created_at
+      type: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    - name: FOREIGN KEY (parameter_id) REFERENCES parameters(id)
+      type: ''
+  vg5_fields:
+    fields:
+    - name: id
+      type: INTEGER PRIMARY KEY AUTOINCREMENT
+    - name: parameter_id
+      type: INTEGER
+    - name: vg5_link
+      type: TEXT
+    - name: created_at
+      type: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    - name: FOREIGN KEY (parameter_id) REFERENCES parameters(id)
+      type: ''
+  abbr_metrics:
+    fields:
+    - name: id
+      type: INTEGER PRIMARY KEY AUTOINCREMENT
+    - name: parameter_id
+      type: INTEGER
+    - name: abbr_value
+      type: VARCHAR(50)
+    - name: abbr_link
+      type: TEXT
+    - name: metrics_link
+      type: TEXT
+    - name: created_at
+      type: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    - name: FOREIGN KEY (parameter_id) REFERENCES parameters(id)
+      type: ''
+parameters:
+- id: 1
+  field_name: Engine Speed
+  reserved_enum_val: 0
+  description: Instantaneous measurement of engine rotational speed
+  unit: Double - RPM (Rotations per Minute)
+  reason_added: ELD Mandate
+  protobuf_field: speed_engine_rpm
+  protocol_reference: ESPD_protocols
+- id: 2
+  field_name: Road Speed
+  reserved_enum_val: 2
+  description: Instantaneous measurement of vehicle road speed
+  unit: Double - km/h (Kilometers per Hour)
+  reason_added: ELD Mandate
+  protobuf_field: speed_road_kph
+  protocol_reference: RSPD_protocols
+- id: 3
+  field_name: Odometer
+  reserved_enum_val: 4
+  description: Vehicle Distance Traveled
+  unit: Double - KM (kilometers)
+  reason_added: ELD Mandate
+  protobuf_field: vehicle_odometer_km
+  protocol_reference: ODOMETER_protocols
+- id: 4
+  field_name: Total Fuel Consumed
+  reserved_enum_val: 7
+  description: Total fuel consumed by the vehicle
+  unit: Double - Liters
+  reason_added: ELD Mandate
+  protobuf_field: total_fuel_l
+  protocol_reference: FUEL_protocols
+- id: 5
+  field_name: Driver Seat Belt
+  reserved_enum_val: 33
+  description: Driver seat belt status
+  unit: 'Integer - Enumeration
+
+    0 = Unknown
+
+    1 = Locked
+
+    2 = Unlocked
+
+    3 = Error'
+  reason_added: Safety
+  protobuf_field: driver_seat_belt
+  protocol_reference: BELT_protocols
+- id: 6
+  field_name: Tire Pressure
+  reserved_enum_val: 45
+  description: Current tire pressure measurement for vehicle safety monitoring
+  unit: Double - PSI (Pounds per Square Inch)
+  reason_added: Safety_Monitoring
+  protobuf_field: tire_pressure_psi
+  protocol_reference: TIRE_protocols
+- id: 8
+  field_name: Engine Coolant Temperature
+  reserved_enum_val: 11
+  description: Temperature of the engine's coolant
+  unit: Double - Celsius
+  reason_added: Engine Insight
+  protobuf_field: engine_coolant_temperature_c
+  protocol_reference: CTMP_protocols
+breadcrumb_fields:
+- parameter_id: 1
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_spd
+  note: Standard breadcrumb field for engine speed monitoring
+- parameter_id: 2
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_spd
+  note: Standard breadcrumb field for road speed monitoring
+- parameter_id: 3
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_odo
+  note: We generate a 'virtualized' field - integrates road speed over time
+- parameter_id: 4
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_tot_fuel
+  note: We generate a 'virtualized' field - integrates fuel rate over time
+- parameter_id: 5
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_cab_status
+  note: Driver seat belt status monitoring for safety compliance
+- parameter_id: 6
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_tire_pressure
+  note: Tire pressure monitoring for safety and fuel efficiency
+- parameter_id: 8
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_temp
+  note: '"full" breadcrumb only - Temperature monitoring for engine health and cooling
+    system diagnostics'
+vg5_fields:
+- parameter_id: 1
+  vg5_link: https://docs.motive.com/vg5/engine_speed_rpm
+- parameter_id: 2
+  vg5_link: https://docs.motive.com/vg5/road_speed_kph
+- parameter_id: 3
+  vg5_link: https://docs.motive.com/vg5/odometer_lo_res_km
+- parameter_id: 3
+  vg5_link: https://docs.motive.com/vg5/odometer_hi_res_km
+- parameter_id: 4
+  vg5_link: https://docs.motive.com/vg5/total_fuel_used_lo_res_l
+- parameter_id: 4
+  vg5_link: https://docs.motive.com/vg5/total_fuel_used_hi_res_l
+- parameter_id: 5
+  vg5_link: https://docs.motive.com/vg5/seat_belt_driver_status
+- parameter_id: 6
+  vg5_link: https://docs.motive.com/vg5/tire_pressure_psi
+- parameter_id: 8
+  vg5_link: https://docs.motive.com/vg5/engine_coolant_temp_c
+abbr_metrics:
+- parameter_id: 1
+  abbr_value: ESPD
+  abbr_link: https://docs.motive.com/abbr/ESPD
+  metrics_link: https://redash.motive.com/dashboard/engine-speed-espd
+- parameter_id: 2
+  abbr_value: RSPD
+  abbr_link: https://docs.motive.com/abbr/RSPD
+  metrics_link: https://redash.motive.com/dashboard/road-speed-rspd
+- parameter_id: 3
+  abbr_value: LODO
+  abbr_link: https://docs.motive.com/abbr/LODO
+  metrics_link: https://redash.motive.com/dashboard/odometer-lodo
+- parameter_id: 3
+  abbr_value: HODO
+  abbr_link: https://docs.motive.com/abbr/HODO
+  metrics_link: https://redash.motive.com/dashboard/odometer-hodo
+- parameter_id: 4
+  abbr_value: TGAL
+  abbr_link: https://docs.motive.com/abbr/TGAL
+  metrics_link: https://redash.motive.com/dashboard/total-fuel-tgal
+- parameter_id: 4
+  abbr_value: HTFL
+  abbr_link: https://docs.motive.com/abbr/HTFL
+  metrics_link: https://redash.motive.com/dashboard/high-fuel-htfl
+- parameter_id: 5
+  abbr_value: BELT
+  abbr_link: https://docs.motive.com/abbr/BELT
+  metrics_link: https://redash.motive.com/dashboard/seat-belt-belt
+- parameter_id: 6
+  abbr_value: TPRS
+  abbr_link: https://docs.motive.com/abbr/TPRS
+  metrics_link: https://redash.motive.com/dashboard/tire-pressure
+- parameter_id: 8
+  abbr_value: CTMP
+  abbr_link: https://docs.motive.com/abbr/CTMP
+  metrics_link: https://redash.motive.com/dashboard/engine-coolant-temperature

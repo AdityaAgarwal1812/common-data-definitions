@@ -1,0 +1,233 @@
+metadata:
+  version: 1.0.0
+  description: Vehicle protocol definitions - separate from parameters
+  last_updated: '2025-07-09'
+  maintainer: Protocol Team
+  standards_covered:
+  - J1939
+  - J1587
+  - J1979
+database_schema:
+  protocol_groups:
+    fields:
+    - name: id
+      type: INTEGER PRIMARY KEY AUTOINCREMENT
+    - name: group_name
+      type: VARCHAR(100) UNIQUE NOT NULL
+    - name: description
+      type: TEXT
+    - name: parameter_reference
+      type: VARCHAR(255)
+    - name: created_at
+      type: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  protocols:
+    fields:
+    - name: id
+      type: INTEGER PRIMARY KEY AUTOINCREMENT
+    - name: group_id
+      type: INTEGER
+    - name: abbr
+      type: VARCHAR(50)
+    - name: protocol_standard
+      type: VARCHAR(50)
+    - name: pgn_pid
+      type: VARCHAR(100)
+    - name: spn
+      type: VARCHAR(50)
+    - name: precision
+      type: VARCHAR(100)
+    - name: spec_range
+      type: VARCHAR(200)
+    - name: max_valid_val
+      type: VARCHAR(50)
+    - name: units
+      type: VARCHAR(50)
+    - name: description
+      type: TEXT
+    - name: states
+      type: TEXT
+    - name: created_at
+      type: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    - name: FOREIGN KEY (group_id) REFERENCES protocol_groups(id)
+      type: ''
+protocol_groups:
+- id: 1
+  group_name: ESPD_protocols
+  description: Engine Speed Protocol Definitions
+  parameter_reference: Engine Speed
+- id: 2
+  group_name: RSPD_protocols
+  description: Road Speed Protocol Definitions
+  parameter_reference: Road Speed
+- id: 3
+  group_name: ODOMETER_protocols
+  description: Odometer Protocol Definitions
+  parameter_reference: Odometer
+- id: 4
+  group_name: FUEL_protocols
+  description: Fuel Consumption Protocol Definitions
+  parameter_reference: Total Fuel Consumed
+- id: 5
+  group_name: BELT_protocols
+  description: Seat Belt Status Protocol Definitions
+  parameter_reference: Driver Seat Belt
+- id: 6
+  group_name: TIRE_protocols
+  description: Tire Pressure Protocol Definitions
+  parameter_reference: Tire Pressure
+protocols:
+- group_id: 1
+  abbr: ESPD
+  protocol_standard: J1939
+  pgn_pid: '61444'
+  spn: '190'
+  precision: '0.125'
+  spec_range: 0 to 8031.875
+  max_valid_val: '-'
+  units: RPM
+  description: Engine speed
+  states: null
+- group_id: 1
+  abbr: ESPD
+  protocol_standard: J1587
+  pgn_pid: '190'
+  spn: N/A
+  precision: '0.25'
+  spec_range: 0 to 16383.75
+  max_valid_val: '-'
+  units: RPM
+  description: Rotational velocity of crankshaft
+  states: null
+- group_id: 1
+  abbr: ESPD
+  protocol_standard: J1979
+  pgn_pid: 0x0C/0xF40C
+  spn: N/A
+  precision: '0.25'
+  spec_range: 0 to 16383.75
+  max_valid_val: '16383.50'
+  units: RPM
+  description: Engine RPM
+  states: null
+- group_id: 2
+  abbr: RSPD
+  protocol_standard: J1939
+  pgn_pid: '65265'
+  spn: '84'
+  precision: 1/256
+  spec_range: 0 to 250.996
+  max_valid_val: '-'
+  units: kph
+  description: Wheel-based vehicle speed
+  states: null
+- group_id: 2
+  abbr: RSPD
+  protocol_standard: J1587
+  pgn_pid: '84'
+  spn: N/A
+  precision: '0.5'
+  spec_range: 0 to 127.5
+  max_valid_val: '-'
+  units: mph
+  description: Indicated vehicle velocity
+  states: null
+- group_id: 2
+  abbr: RSPD
+  protocol_standard: J1979
+  pgn_pid: 0x0D/0xF40D
+  spn: N/A
+  precision: '1.0'
+  spec_range: 0 to 255
+  max_valid_val: '-'
+  units: kph
+  description: Vehicle speed sensor
+  states: null
+- group_id: 3
+  abbr: LODO
+  protocol_standard: J1939
+  pgn_pid: '65248'
+  spn: '245'
+  precision: 125 m per bit
+  spec_range: 0 to 526,385,151.875
+  max_valid_val: '-'
+  units: km
+  description: Total vehicle distance (low resolution)
+  states: null
+- group_id: 3
+  abbr: HODO
+  protocol_standard: J1939
+  pgn_pid: '65217'
+  spn: '917'
+  precision: 5 m per bit
+  spec_range: 0 to 21,055,406.075
+  max_valid_val: '-'
+  units: km
+  description: Total vehicle distance (high resolution)
+  states: null
+- group_id: 4
+  abbr: TGAL
+  protocol_standard: J1939
+  pgn_pid: '65257'
+  spn: '250'
+  precision: 0.5 L/bit
+  spec_range: 0 to 2,105,540,607.5
+  max_valid_val: '-'
+  units: L
+  description: Engine Total Fuel Used
+  states: null
+- group_id: 4
+  abbr: HTFL
+  protocol_standard: J1939
+  pgn_pid: '64777'
+  spn: '5054'
+  precision: 0.001 L/bit
+  spec_range: 0 to 4,211,081.215
+  max_valid_val: '-'
+  units: L
+  description: Engine Total Fuel Used (High Resolution)
+  states: null
+- group_id: 5
+  abbr: BELT
+  protocol_standard: J1939
+  pgn_pid: '57344'
+  spn: '1856'
+  precision: N/A
+  spec_range: N/A
+  max_valid_val: '-'
+  units: N/A
+  description: Seat Belt Switch
+  states: '00b = NOT Buckled
+
+    01b = OK - Seat Belt is buckled
+
+    10b = Error - Switch state cannot be determined
+
+    11b = Not Available'
+- group_id: 5
+  abbr: BELT
+  protocol_standard: J1939
+  pgn_pid: '64791'
+  spn: '4952'
+  precision: N/A
+  spec_range: N/A
+  max_valid_val: '-'
+  units: N/A
+  description: Driver Beltlock Status
+  states: '00b = Unlocked
+
+    01b = Locked
+
+    10b = Error - Beltlock state cannot be determined
+
+    11b = Not available'
+- group_id: 6
+  abbr: TPRS
+  protocol_standard: J1939
+  pgn_pid: '65268'
+  spn: '241'
+  precision: 0.5 kPa/bit
+  spec_range: 0 to 4000 kPa
+  max_valid_val: '-'
+  units: kPa
+  description: Tire pressure sensor reading
+  states: null

@@ -1,0 +1,4 @@
+PyYAML>=6.0
+jsonschema>=4.17.0
+Flask>=2.3.0
+Flask-RESTX>=1.1.0

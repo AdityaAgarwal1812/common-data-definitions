@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vehicle Parameters Schema",
+  "description": "JSON Schema for validating vehicle parameter definitions",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"},
+        "description": {"type": "string"},
+        "last_updated": {"type": "string"},
+        "maintainer": {"type": "string"}
+      },
+      "required": ["version", "maintainer"]
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Unique parameter identifier"
+          },
+          "field_name": {
+            "type": "string",
+            "minLength": 3,
+            "description": "Human-readable parameter name"
+          },
+          "reserved_enum_val": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Reserved enumeration value"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Detailed parameter description"
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 5,
+            "description": "Unit specification and data type"
+          },
+          "reason_added": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Business reason for adding this parameter"
+          },
+          "protobuf_field": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*[a-z0-9]$",
+            "description": "Protobuf field name in snake_case"
+          },
+          "protocol_reference": {
+            "type": "string",
+            "pattern": "^[A-Z_]+_protocols$",
+            "description": "Reference to protocol group in protocols.yaml"
+          }
+        },
+        "required": [
+          "id",
+          "field_name", 
+          "reserved_enum_val",
+          "description",
+          "unit",
+          "reason_added",
+          "protobuf_field",
+          "protocol_reference"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "breadcrumb_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "parameter_id": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Reference to parameter ID"
+          },
+          "breadcrumb_link": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://docs\\.motive\\.com/",
+            "description": "URL to breadcrumb documentation"
+          },
+          "note": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Additional notes about the breadcrumb"
+          }
+        },
+        "required": ["parameter_id", "breadcrumb_link", "note"],
+        "additionalProperties": false
+      }
+    },
+    "vg5_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "parameter_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "vg5_link": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://docs\\.motive\\.com/vg5/"
+          }
+        },
+        "required": ["parameter_id", "vg5_link"],
+        "additionalProperties": false
+      }
+    },
+    "abbr_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object", 
+        "properties": {
+          "parameter_id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "abbr_value": {
+            "type": "string",
+            "pattern": "^[A-Z]{2,6}$",
+            "description": "2-6 uppercase letters abbreviation"
+          },
+          "abbr_link": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://docs\\.motive\\.com/abbr/"
+          },
+          "metrics_link": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://redash\\.motive\\.com/"
+          }
+        },
+        "required": ["parameter_id", "abbr_value", "abbr_link", "metrics_link"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["parameters"],
+  "additionalProperties": true
+}
