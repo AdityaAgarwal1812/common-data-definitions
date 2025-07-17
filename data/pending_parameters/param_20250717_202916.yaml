@@ -1,0 +1,23 @@
+abbr_metrics:
+- abbr_link: https://docs.motive.com/abbr/DALV
+  abbr_value: DALV
+  metrics_link: https://redash.motive.com/dashboard/driver-alertness-level
+  parameter_id: 14
+breadcrumb_fields:
+- breadcrumb_link: https://docs.motive.com/breadcrumb/driver_alertness_level
+  note: Driver alertness monitoring for safety and compliance - measures attention
+    level percentage
+  parameter_id: 14
+parameters:
+- description: Indicates the alertness level of the driver measured by the driver
+    alertness warning system. 100 % means driver is fully attentive.
+  field_name: Driver Alertness Level
+  id: 14
+  protobuf_field: driver_alertness_level_pct
+  protocol_reference: DALV_protocols
+  reason_added: Ability to paint a clearer picture of what the vehicle is doing in-field
+  reserved_enum_val: 68
+  unit: Double - %
+vg5_fields:
+- parameter_id: 14
+  vg5_link: https://docs.motive.com/vg5/driver_alertness_level_pct
