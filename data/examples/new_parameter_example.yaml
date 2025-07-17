@@ -1,24 +1,24 @@
 parameters:
-  - id: 14
-    field_name: "Driver Alertness Level"
-    reserved_enum_val: 68
-    description: "Indicates the alertness level of the driver measured by the driver alertness warning system. 100 % means driver is fully attentive."
+  - id: 15
+    field_name: "Brake Pedal Position"
+    reserved_enum_val: 75
+    description: "Position of the brake pedal as a percentage"
     unit: "Double - %"
-    reason_added: "Ability to paint a clearer picture of what the vehicle is doing in-field"
-    protobuf_field: "driver_alertness_level_pct"
-    protocol_reference: "DALV_protocols"
+    reason_added: "safety"
+    protobuf_field: "brake_pedal_position_pct"
+    protocol_reference: "BRAK_protocols"
 
 breadcrumb_fields:
-  - parameter_id: 14
-    breadcrumb_link: "https://docs.motive.com/breadcrumb/driver_alertness_level"
-    note: "Driver alertness monitoring for safety and compliance - measures attention level percentage"
+  - parameter_id: 15
+    breadcrumb_link: "https://docs.motive.com/breadcrumb/brake_pedal_position"
+    note: "Brake pedal position monitoring"
 
 vg5_fields:
-  - parameter_id: 14
-    vg5_link: "https://docs.motive.com/vg5/driver_alertness_level_pct"
+  - parameter_id: 15
+    vg5_link: "https://docs.motive.com/vg5/brake_pedal_position_pct"
 
 abbr_metrics:
-  - parameter_id: 14
-    abbr_value: "DALV"
-    abbr_link: "https://docs.motive.com/abbr/DALV"
-    metrics_link: "https://redash.motive.com/dashboard/driver-alertness-level"
+  - parameter_id: 15
+    abbr_value: "BRAK"
+    abbr_link: "https://docs.motive.com/abbr/BRAK"
+    metrics_link: "https://redash.motive.com/dashboard/brake-pedal-position"

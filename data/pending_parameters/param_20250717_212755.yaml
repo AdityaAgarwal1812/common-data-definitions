@@ -1,0 +1,21 @@
+abbr_metrics:
+- abbr_link: https://docs.motive.com/abbr/BRAK
+  abbr_value: BRAK
+  metrics_link: https://redash.motive.com/dashboard/brake-pedal-position
+  parameter_id: 15
+breadcrumb_fields:
+- breadcrumb_link: https://docs.motive.com/breadcrumb/brake_pedal_position
+  note: Brake pedal position monitoring
+  parameter_id: 15
+parameters:
+- description: Position of the brake pedal as a percentage
+  field_name: Brake Pedal Position
+  id: 15
+  protobuf_field: brake_pedal_position_pct
+  protocol_reference: BRAK_protocols
+  reason_added: safety
+  reserved_enum_val: 75
+  unit: Double - %
+vg5_fields:
+- parameter_id: 15
+  vg5_link: https://docs.motive.com/vg5/brake_pedal_position_pct
