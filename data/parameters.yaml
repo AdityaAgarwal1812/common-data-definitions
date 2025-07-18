@@ -157,6 +157,14 @@ parameters:
   reason_added: Safety
   reserved_enum_val: 70
   unit: Double - Liters
+- description: Ambient Air Temperature outside of the vehicle
+  field_name: Ambient Air Temperature
+  id: 18
+  protobuf_field: ambient_air_temperature_c
+  protocol_reference: AATP_protocols
+  reason_added: Safety
+  reserved_enum_val: 78
+  unit: Double - Celsius
 breadcrumb_fields:
 - parameter_id: 1
   breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_spd
@@ -190,6 +198,9 @@ breadcrumb_fields:
 - breadcrumb_link: https://docs.motive.com/breadcrumb/lifetime_fuel_idle
   note: Fuel consumption monitoring during idle periods for efficiency analysis
   parameter_id: 15
+- breadcrumb_link: https://docs.motive.com/breadcrumb/veh_amb_air_temp
+  note: full breadcrumb only - Temperature monitoring for ambient air conditions
+  parameter_id: 18
 vg5_fields:
 - parameter_id: 1
   vg5_link: https://docs.motive.com/vg5/engine_speed_rpm
@@ -215,6 +226,8 @@ vg5_fields:
   vg5_link: https://docs.motive.com/vg5/driver_alertness_level_pct
 - parameter_id: 15
   vg5_link: https://docs.motive.com/vg5/total_fuel_used_idle_l
+- parameter_id: 18
+  vg5_link: https://docs.motive.com/vg5/ambient_air_temp_c
 abbr_metrics:
 - parameter_id: 1
   abbr_value: ESPD
@@ -264,3 +277,7 @@ abbr_metrics:
   abbr_value: IGAL
   metrics_link: https://redash.motive.com/dashboard/lifetime-fuel-idle
   parameter_id: 15
+- abbr_link: https://docs.motive.com/abbr/AATP
+  abbr_value: AATP
+  metrics_link: https://redash.motive.com/dashboard/ambient-air-temperature
+  parameter_id: 18

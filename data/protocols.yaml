@@ -87,6 +87,10 @@ protocol_groups:
   group_name: IGAL_protocols
   id: 10
   parameter_reference: Lifetime Fuel Consumed - Idle
+- description: Ambient Air Temperature Protocol Definitions
+  group_name: AATP_protocols
+  id: 11
+  parameter_reference: Ambient Air Temperature
 protocols:
 - group_id: 1
   abbr: ESPD
@@ -281,3 +285,36 @@ protocols:
   spn: '236'
   states: null
   units: Liters
+- abbr: AATP
+  description: Temperature of air surrounding vehicle.
+  group_id: 11
+  max_valid_val: '1734.96875'
+  pgn_pid: '65269'
+  precision: "0.03125 \xB0C/bit"
+  protocol_standard: J1939
+  spec_range: "-273 to 1734.96875 \xB0C"
+  spn: '171'
+  states: null
+  units: Celsius
+- abbr: AATP
+  description: Temperature of air surrounding vehicle.
+  group_id: 11
+  max_valid_val: '8191.75'
+  pgn_pid: '171'
+  precision: "0.25 \xB0F"
+  protocol_standard: J1587
+  spec_range: "-8192.00 to +8191.75 \xB0F"
+  spn: N/A
+  states: null
+  units: Fahrenheit
+- abbr: AATP
+  description: Temperature of air surrounding vehicle.
+  group_id: 11
+  max_valid_val: '214'
+  pgn_pid: 0x46/0xF446
+  precision: "1 \xB0C/bit"
+  protocol_standard: J1979
+  spec_range: "-40 to 215 \xB0C/bit"
+  spn: N/A
+  states: null
+  units: Celsius
