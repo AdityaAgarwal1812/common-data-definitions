@@ -1,0 +1,23 @@
+{% extends "base.md.j2" %}
+
+{% block content %}
+# Vehicle Parameters Overview
+
+## Summary
+- **Total Parameters:** {{ parameters|length }}
+- **Last Updated:** {{ timestamp }}
+- **Validation Status:** {{ validation_status }}
+
+## Parameters Table
+
+| ID | Parameter Name | Description | Unit | ABBR | Protocol Group | Details |
+|----|----------------|-------------|------|------|----------------|---------|
+{% for param in parameters %}
+| {{ param.id }} | {{ param.field_name }} | {{ param.description | truncate(60) }} | {{ param.unit }} | {{ param.protocol_abbr }} | [{{ param.protocol_reference }}](protocols/{{ param.protocol_reference }}.md) | [View Details](details/{{ param.field_name | lower | replace(' ', '_') | replace('-', '_') }}.md) |
+{% endfor %}
+
+## Quick Links
+- [Protocol Groups Overview](protocols.md)
+- [Parameter Search Index](search_index.md)
+- [Change History](changelog.md)
+{% endblock %}

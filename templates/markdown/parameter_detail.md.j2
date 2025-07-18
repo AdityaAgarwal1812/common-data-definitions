@@ -1,0 +1,71 @@
+{% extends "base.md.j2" %}
+
+{% block content %}
+# {{ parameter.field_name }} Parameter
+
+## Overview
+- **ID:** {{ parameter.id }}
+- **Reserved Enum Value:** {{ parameter.reserved_enum_val }}
+- **Unit:** {{ parameter.unit }}
+- **Reason Added:** {{ parameter.reason_added }}
+- **Protobuf Field:** `{{ parameter.protobuf_field }}`
+
+## Description
+{{ parameter.description }}
+
+## Protocol Information
+**Protocol Group:** [{{ parameter.protocol_reference }}](../protocols/{{ parameter.protocol_reference }}.md)
+
+{% if protocols %}
+### Protocol Details
+| Protocol | Standard | PGN/PID | SPN | Precision | Range | Units |
+|----------|----------|---------|-----|-----------|-------|-------|
+{% for protocol in protocols %}
+| {{ protocol.abbr }} | {{ protocol.protocol_standard }} | {{ protocol.pgn_pid }} | {{ protocol.spn }} | {{ protocol.precision }} | {{ protocol.spec_range }} | {{ protocol.units }} |
+{% endfor %}
+{% endif %}
+
+## Related Information
+
+{% if breadcrumb_fields %}
+### Breadcrumb Links
+{% for breadcrumb in breadcrumb_fields %}
+- **Link:** [{{ breadcrumb.breadcrumb_link }}]({{ breadcrumb.breadcrumb_link }})
+- **Note:** {{ breadcrumb.note }}
+{% endfor %}
+{% endif %}
+
+{% if vg5_fields %}
+### VG5 Fields
+{% for vg5 in vg5_fields %}
+- [{{ vg5.vg5_link }}]({{ vg5.vg5_link }})
+{% endfor %}
+{% endif %}
+
+{% if abbr_metrics %}
+### Metrics and Analytics
+{% for metric in abbr_metrics %}
+- **Abbreviation:** {{ metric.abbr_value }}
+- **Documentation:** [{{ metric.abbr_link }}]({{ metric.abbr_link }})
+- **Dashboard:** [{{ metric.metrics_link }}]({{ metric.metrics_link }})
+{% endfor %}
+{% endif %}
+
+## Cross-References
+{% if related_parameters %}
+### Related Parameters
+{% for related in related_parameters %}
+- [{{ related.field_name }}]({{ related.field_name | lower | replace(' ', '_') | replace('-', '_') }}.md) - {{ related.description | truncate(60) }}
+{% endfor %}
+{% endif %}
+
+## Navigation
+- [← Back to Parameters Overview](../parameters.md)
+- [→ View All Protocols](../protocols.md)
+{% if navigation.previous %}
+- [← Previous: {{ navigation.previous.field_name }}]({{ navigation.previous.field_name | lower | replace(' ', '_') | replace('-', '_') }}.md)
+{% endif %}
+{% if navigation.next %}
+- [→ Next: {{ navigation.next.field_name }}]({{ navigation.next.field_name | lower | replace(' ', '_') | replace('-', '_') }}.md)
+{% endif %}
+{% endblock %}

@@ -28,16 +28,22 @@ jobs:
     
     - name: Install Dependencies
       run: |
-        pip install pyyaml
+        pip install pyyaml jinja2 python-frontmatter mistune
     
     - name: Merge Pending Files to Main YAML
       run: |
         python .github/scripts/merge_pending_files.py
     
+    - name: Generate Documentation
+      run: |
+        echo "🔄 Generating markdown documentation..."
+        python generators/markdown_generator.py
+        echo "✅ Markdown documentation generated!"
+    
     - name: Commit Changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/parameters.yaml data/protocols.yaml
-        git commit -m "Auto-merge: Add approved parameter/protocol from PR" || exit 0
+        git add data/parameters.yaml data/protocols.yaml output/markdown/
+        git commit -m "Auto-merge: Add approved parameter/protocol from PR + Generate docs" || exit 0
         git push
