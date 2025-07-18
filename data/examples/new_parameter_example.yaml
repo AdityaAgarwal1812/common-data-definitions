@@ -1,24 +1,24 @@
 parameters:
-  - id: 18
-    field_name: "Ambient Air Temperature"
-    reserved_enum_val: 78
-    description: "Ambient Air Temperature outside of the vehicle"
-    unit: "Double - Celsius"
+  - id: 19
+    field_name: "Navigation Based Vehicle Speed"
+    reserved_enum_val: 86
+    description: "Double - GPS based vehicle speed"
+    unit: "km/h (kilometers per hour)"
     reason_added: "Safety"
-    protobuf_field: "ambient_air_temperature_c"
-    protocol_reference: "AATP_protocols"
+    protobuf_field: "navigation_based_vehicle_speed_kph"
+    protocol_reference: "GSPD_protocols"
 
 breadcrumb_fields:
-  - parameter_id: 18
-    breadcrumb_link: "https://docs.motive.com/breadcrumb/veh_amb_air_temp"
-    note: "full breadcrumb only - Temperature monitoring for ambient air conditions"
+  - parameter_id: 19
+    breadcrumb_link: "https://docs.motive.com/breadcrumb/navigation_based_vehicle_speed"
+    note: "GPS-based vehicle speed monitoring for navigation and safety systems"
 
 vg5_fields:
-  - parameter_id: 18
-    vg5_link: "https://docs.motive.com/vg5/ambient_air_temp_c"
+  - parameter_id: 19
+    vg5_link: "https://docs.motive.com/vg5/navigation_based_vehicle_speed_kph"
 
 abbr_metrics:
-  - parameter_id: 18
-    abbr_value: "AATP"
-    abbr_link: "https://docs.motive.com/abbr/AATP"
-    metrics_link: "https://redash.motive.com/dashboard/ambient-air-temperature"
+  - parameter_id: 19
+    abbr_value: "GSPD"
+    abbr_link: "https://docs.motive.com/abbr/GSPD"
+    metrics_link: "https://redash.motive.com/dashboard/navigation-based-speed"

@@ -1,40 +1,18 @@
 protocol_groups:
-  - id: 11
-    group_name: "AATP_protocols"
-    description: "Ambient Air Temperature Protocol Definitions"
-    parameter_reference: "Ambient Air Temperature"
+  - id: 12
+    group_name: "GSPD_protocols"
+    description: "Navigation Based Vehicle Speed Protocol Definitions"
+    parameter_reference: "Navigation Based Vehicle Speed"
 
 protocols:
-  - group_id: 11
-    abbr: "AATP"
+  - group_id: 12
+    abbr: "GSPD"
     protocol_standard: "J1939"
-    pgn_pid: "65269"
-    spn: "171"
-    precision: "0.03125 °C/bit"
-    spec_range: "-273 to 1734.96875 °C"
-    max_valid_val: "1734.96875"
-    units: "Celsius"
-    description: "Temperature of air surrounding vehicle."
-    states: null
-  - group_id: 11
-    abbr: "AATP"
-    protocol_standard: "J1587"
-    pgn_pid: "171"
-    spn: "N/A"
-    precision: "0.25 °F"
-    spec_range: "-8192.00 to +8191.75 °F"
-    max_valid_val: "8191.75"
-    units: "Fahrenheit"
-    description: "Temperature of air surrounding vehicle."
-    states: null
-  - group_id: 11
-    abbr: "AATP"
-    protocol_standard: "J1979"
-    pgn_pid: "0x46/0xF446"
-    spn: "N/A"
-    precision: "1 °C/bit"
-    spec_range: "-40 to 215 °C/bit"
-    max_valid_val: "214"
-    units: "Celsius"
-    description: "Temperature of air surrounding vehicle."
+    pgn_pid: "65256"
+    spn: "517"
+    precision: "1/256 km/h per bit"
+    spec_range: "0 to 250.996 km/h"
+    max_valid_val: "250.996"
+    units: "km/h"
+    description: "Speed of the vehicle as calculated from a device such as a Global Positioning System (GPS)."
     states: null
