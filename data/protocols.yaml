@@ -83,6 +83,10 @@ protocol_groups:
   group_name: DALV_protocols
   description: Driver Alertness Level Protocol Definitions
   parameter_reference: Driver Alertness Level
+- description: Lifetime Fuel Consumed Idle Protocol Definitions
+  group_name: IGAL_protocols
+  id: 10
+  parameter_reference: Lifetime Fuel Consumed - Idle
 protocols:
 - group_id: 1
   abbr: ESPD
@@ -265,3 +269,15 @@ protocols:
     be used independent of the technology and ECU used to estimate the driver alertness
     condition.
   states: null
+- abbr: IGAL
+  description: Accumulated amount of fuel used during vehicle operation while under
+    idle conditions.
+  group_id: 10
+  max_valid_val: '2105540607.5'
+  pgn_pid: '65244'
+  precision: 0.5 l/bit
+  protocol_standard: J1939
+  spec_range: 0 to 2,105,540,607.5 l
+  spn: '236'
+  states: null
+  units: Liters

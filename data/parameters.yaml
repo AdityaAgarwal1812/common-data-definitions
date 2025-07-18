@@ -148,6 +148,15 @@ parameters:
   reason_added: Safety
   protobuf_field: driver_alertness_level_pct
   protocol_reference: DALV_protocols
+- description: Accumulated amount of fuel used during vehicle operation while under
+    idle conditions.
+  field_name: Lifetime Fuel Consumed - Idle
+  id: 15
+  protobuf_field: lifetime_fuel_idle_l
+  protocol_reference: IGAL_protocols
+  reason_added: Safety
+  reserved_enum_val: 70
+  unit: Double - Liters
 breadcrumb_fields:
 - parameter_id: 1
   breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_spd
@@ -178,6 +187,9 @@ breadcrumb_fields:
   breadcrumb_link: https://docs.motive.com/breadcrumb/driver_alertness_level
   note: Driver alertness monitoring for safety and compliance - measures attention
     level percentage
+- breadcrumb_link: https://docs.motive.com/breadcrumb/lifetime_fuel_idle
+  note: Fuel consumption monitoring during idle periods for efficiency analysis
+  parameter_id: 15
 vg5_fields:
 - parameter_id: 1
   vg5_link: https://docs.motive.com/vg5/engine_speed_rpm
@@ -201,6 +213,8 @@ vg5_fields:
   vg5_link: https://docs.motive.com/vg5/axle_speed_front_right_kph
 - parameter_id: 14
   vg5_link: https://docs.motive.com/vg5/driver_alertness_level_pct
+- parameter_id: 15
+  vg5_link: https://docs.motive.com/vg5/total_fuel_used_idle_l
 abbr_metrics:
 - parameter_id: 1
   abbr_value: ESPD
@@ -246,3 +260,7 @@ abbr_metrics:
   abbr_value: DALV
   abbr_link: https://docs.motive.com/abbr/DALV
   metrics_link: https://redash.motive.com/dashboard/driver-alertness-level
+- abbr_link: https://docs.motive.com/abbr/IGAL
+  abbr_value: IGAL
+  metrics_link: https://redash.motive.com/dashboard/lifetime-fuel-idle
+  parameter_id: 15
