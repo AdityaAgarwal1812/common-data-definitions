@@ -32,7 +32,9 @@ jobs:
     
     - name: Merge Pending Files to Main YAML
       run: |
+        echo "🔄 Merging pending files..."
         python .github/scripts/merge_pending_files.py
+        echo "✅ Merge completed!"
     
     - name: Generate Documentation
       run: |
@@ -40,10 +42,29 @@ jobs:
         python generators/markdown_generator.py
         echo "✅ Markdown documentation generated!"
     
+    - name: Check for changes
+      id: verify-changed-files
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "📝 Changes detected"
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "ℹ️ No changes to commit"
+        fi
+    
     - name: Commit Changes
+      if: steps.verify-changed-files.outputs.changed == 'true'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add data/parameters.yaml data/protocols.yaml output/markdown/
-        git commit -m "Auto-merge: Add approved parameter/protocol from PR + Generate docs" || exit 0
+        git add data/parameters.yaml data/protocols.yaml
+        git add output/markdown/ || echo "No markdown files to add"
+        git status
+        git commit -m "Auto-merge: Add approved parameter/protocol from PR + Generate docs"
         git push
+    
+    - name: No Changes
+      if: steps.verify-changed-files.outputs.changed == 'false'
+      run: |
+        echo "ℹ️ No changes to commit - merge may have already been processed"
