@@ -91,6 +91,10 @@ protocol_groups:
   group_name: AATP_protocols
   id: 11
   parameter_reference: Ambient Air Temperature
+- description: Navigation Based Vehicle Speed Protocol Definitions
+  group_name: GSPD_protocols
+  id: 12
+  parameter_reference: Navigation Based Vehicle Speed
 protocols:
 - group_id: 1
   abbr: ESPD
@@ -318,3 +322,15 @@ protocols:
   spn: N/A
   states: null
   units: Celsius
+- abbr: GSPD
+  description: Speed of the vehicle as calculated from a device such as a Global Positioning
+    System (GPS).
+  group_id: 12
+  max_valid_val: '250.996'
+  pgn_pid: '65256'
+  precision: 1/256 km/h per bit
+  protocol_standard: J1939
+  spec_range: 0 to 250.996 km/h
+  spn: '517'
+  states: null
+  units: km/h
