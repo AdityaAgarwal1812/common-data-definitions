@@ -1,0 +1,21 @@
+abbr_metrics:
+- abbr_link: https://docs.motive.com/abbr/AATP
+  abbr_value: AATP
+  metrics_link: https://redash.motive.com/dashboard/ambient-air-temperature
+  parameter_id: 18
+breadcrumb_fields:
+- breadcrumb_link: https://docs.motive.com/breadcrumb/veh_amb_air_temp
+  note: full breadcrumb only - Temperature monitoring for ambient air conditions
+  parameter_id: 18
+parameters:
+- description: Ambient Air Temperature outside of the vehicle
+  field_name: Ambient Air Temperature
+  id: 18
+  protobuf_field: ambient_air_temperature_c
+  protocol_reference: AATP_protocols
+  reason_added: Safety
+  reserved_enum_val: 78
+  unit: Double - Celsius
+vg5_fields:
+- parameter_id: 18
+  vg5_link: https://docs.motive.com/vg5/ambient_air_temp_c
