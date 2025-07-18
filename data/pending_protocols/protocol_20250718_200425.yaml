@@ -1,0 +1,18 @@
+protocol_groups:
+- description: Navigation Based Vehicle Speed Protocol Definitions
+  group_name: GSPD_protocols
+  id: 12
+  parameter_reference: Navigation Based Vehicle Speed
+protocols:
+- abbr: GSPD
+  description: Speed of the vehicle as calculated from a device such as a Global Positioning
+    System (GPS).
+  group_id: 12
+  max_valid_val: '250.996'
+  pgn_pid: '65256'
+  precision: 1/256 km/h per bit
+  protocol_standard: J1939
+  spec_range: 0 to 250.996 km/h
+  spn: '517'
+  states: null
+  units: km/h
