@@ -1,18 +1,18 @@
 protocol_groups:
-  - id: 9
-    group_name: "DALV_protocols"
-    description: "Driver Alertness Level Protocol Definitions"
-    parameter_reference: "Driver Alertness Level"
+  - id: 10
+    group_name: "IGAL_protocols"
+    description: "Lifetime Fuel Consumed Idle Protocol Definitions"
+    parameter_reference: "Lifetime Fuel Consumed - Idle"
 
 protocols:
-  - group_id: 9
-    abbr: "DALV"
+  - group_id: 10
+    abbr: "IGAL"
     protocol_standard: "J1939"
-    pgn_pid: "65115"
-    spn: "7474"
-    precision: "0.4 %/bit"
-    spec_range: "0 to 100 %"
-    max_valid_val: "100"
-    units: "%"
-    description: "Indicates the alertness level of the driver measured by the driver alertness warning system. 100 % means driver is fully attentive. This signal can be used independent of the technology and ECU used to estimate the driver alertness condition."
+    pgn_pid: "65244"
+    spn: "236"
+    precision: "0.5 l/bit"
+    spec_range: "0 to 2,105,540,607.5 l"
+    max_valid_val: "2105540607.5"
+    units: "Liters"
+    description: "Accumulated amount of fuel used during vehicle operation while under idle conditions."
     states: null

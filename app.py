@@ -406,7 +406,6 @@ def load_example_protocol_file():
         return None
 
 
-        
 @api.route('/validate')
 class ValidateData(Resource):
     def get(self):
@@ -939,14 +938,7 @@ if __name__ == '__main__':
         print("   Add Parameter:      http://localhost:5000/add-parameter-from-file")
         print("   Add Protocol:       http://localhost:5000/add-protocol-from-file")
         print()
-        print("📖 Parameter Documentation:")
-        print("   Engine Speed:       http://localhost:5000/docs/engine_speed")
-        print("   Road Speed:         http://localhost:5000/docs/road_speed")
-        print("   Odometer:           http://localhost:5000/docs/odometer")
-        print("   Total Fuel:         http://localhost:5000/docs/total_fuel_consumed")
-        print("   Driver Seat Belt:   http://localhost:5000/docs/driver_seat_belt")
-        print("   Tire Pressure:      http://localhost:5000/docs/tire_pressure")
-        print()
+       
         print("🔗 API Endpoints:")
         print("   All Parameters:     http://localhost:5000/parameters")
         print("   All Protocols:      http://localhost:5000/protocols")
