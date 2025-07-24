@@ -376,11 +376,11 @@ class MarkdownGenerator:
             self.generate_protocols_overview()
             self.generate_protocol_detail_pages()
             
-            logger.info("✅ All markdown files generated successfully!")
+            logger.info(" All markdown files generated successfully!")
             logger.info(f"Output directory: {self.output_dir}")
             
         except Exception as e:
-            logger.error(f"❌ Error generating markdown: {e}")
+            logger.error(f" Error generating markdown: {e}")
             raise
 
 def main():

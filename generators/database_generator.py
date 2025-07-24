@@ -147,7 +147,7 @@ class DatabaseGenerator:
             )
         """)
         
-        print("✅ Database tables created")
+        print("Database tables created")
     
     def _insert_parameters_data(self, cursor, data):
         """Insert all parameter-related data"""
@@ -169,7 +169,7 @@ class DatabaseGenerator:
                     param.get('protobuf_field'),
                     param.get('protocol_reference')
                 ))
-            print(f"✅ Inserted {len(data['parameters'])} parameters")
+            print(f" Inserted {len(data['parameters'])} parameters")
         
         # Insert breadcrumb fields
         if 'breadcrumb_fields' in data:
@@ -182,7 +182,7 @@ class DatabaseGenerator:
                     breadcrumb.get('breadcrumb_link'),
                     breadcrumb.get('note')
                 ))
-            print(f"✅ Inserted {len(data['breadcrumb_fields'])} breadcrumb fields")
+            print(f" Inserted {len(data['breadcrumb_fields'])} breadcrumb fields")
         
         # Insert VG5 fields
         if 'vg5_fields' in data:
@@ -194,7 +194,7 @@ class DatabaseGenerator:
                     vg5.get('parameter_id'),
                     vg5.get('vg5_link')
                 ))
-            print(f"✅ Inserted {len(data['vg5_fields'])} VG5 fields")
+            print(f" Inserted {len(data['vg5_fields'])} VG5 fields")
         
         # Insert abbreviation metrics
         if 'abbr_metrics' in data:
@@ -208,7 +208,7 @@ class DatabaseGenerator:
                     abbr.get('abbr_link'),
                     abbr.get('metrics_link')
                 ))
-            print(f"✅ Inserted {len(data['abbr_metrics'])} abbreviation metrics")
+            print(f" Inserted {len(data['abbr_metrics'])} abbreviation metrics")
     
     def _insert_protocols_data(self, cursor, data):
         """Insert all protocol-related data"""
@@ -225,7 +225,7 @@ class DatabaseGenerator:
                     group.get('description'),
                     group.get('parameter_reference')
                 ))
-            print(f"✅ Inserted {len(data['protocol_groups'])} protocol groups")
+            print(f" Inserted {len(data['protocol_groups'])} protocol groups")
         
         # Insert protocols
         if 'protocols' in data:
@@ -247,7 +247,7 @@ class DatabaseGenerator:
                     protocol.get('description'),
                     protocol.get('states')
                 ))
-            print(f"✅ Inserted {len(data['protocols'])} protocols")
+            print(f" Inserted {len(data['protocols'])} protocols")
 
 
 # Example usage

@@ -62,13 +62,13 @@ def ensure_database_exists():
             )
             
             if success:
-                print(f"✅ {message}")
+                print(f"{message}")
                 return True
             else:
-                print(f"❌ {message}")
+                print(f" {message}")
                 return False
         except Exception as e:
-            print(f"❌ Database generation error: {e}")
+            print(f" Database generation error: {e}")
             return False
     else:
         return True
@@ -136,11 +136,11 @@ def regenerate_database():
         )
         
         if success:
-            print(f"✅ Database regenerated: {message}")
+            print(f" Database regenerated: {message}")
         else:
-            print(f"❌ Database regeneration failed: {message}")
+            print(f" Database regeneration failed: {message}")
     except Exception as e:
-        print(f"❌ Database regeneration error: {e}")
+        print(f" Database regeneration error: {e}")
 
 def add_new_protocol_with_validation(new_protocol_data):
     """Add new protocol with validation"""
@@ -177,7 +177,7 @@ def add_new_protocol_with_validation(new_protocol_data):
         with open('data/protocols.yaml', 'w', encoding='utf-8') as f:
             yaml.dump(existing_data, f, default_flow_style=False, sort_keys=False, indent=2)
         
-        print("✅ Successfully added new protocol to YAML")
+        print(" Successfully added new protocol to YAML")
         
         # Step 3: Regenerate database
         regenerate_database()
@@ -246,7 +246,7 @@ def get_parameter_complete_data(field_name):
         return result
         
     except Exception as e:
-        print(f"❌ Database query error: {e}")
+        print(f" Database query error: {e}")
         return None
     finally:
         conn.close()
@@ -262,7 +262,7 @@ def get_all_parameters():
         parameters = [dict(row) for row in cursor.fetchall()]
         return parameters
     except Exception as e:
-        print(f"❌ Database query error: {e}")
+        print(f" Database query error: {e}")
         return []
     finally:
         conn.close()
@@ -900,36 +900,36 @@ def main_docs():
 
 def initialize_database():
     """Initialize database from validated YAML files"""
-    print("🚀 Initializing Vehicle Parameters Database with Enhanced Validation...")
+    print(" Initializing Vehicle Parameters Database with Enhanced Validation...")
     
     # Step 1: Validate YAML files first
     print("🔍 Validating YAML files...")
     validation_results = validate_yaml_files()
     if validation_results.get('overall_valid', False):
-        print("✅ YAML validation passed")
+        print(" YAML validation passed")
     else:
-        print("⚠️ YAML validation has issues:")
+        print(" YAML validation has issues:")
         for error in validation_results.get('errors', []):
             print(f"  - {error}")
     
     # Step 2: Ensure database exists
-    print("🗄️ Checking database...")
+    print(" Checking database...")
     if ensure_database_exists():
-        print("✅ Database ready")
+        print(" Database ready")
     else:
-        print("⚠️ Database issues detected")
+        print(" Database issues detected")
     
-    print("✅ Database initialization completed!")
+    print(" Database initialization completed!")
     return True
 
 if __name__ == '__main__':
-    print("🚗 Vehicle Parameters API - Enhanced with Validation System")
+    print(" Vehicle Parameters API - Enhanced with Validation System")
     print("=" * 80)
     
     # Initialize database on startup
     if initialize_database():
         print()
-        print("🌐 Available URLs:")
+        print(" Available URLs:")
         print("   Main Documentation: http://localhost:5000/docs/")
         print("   Swagger API:        http://localhost:5000/docs")
         print("   Protocol Groups:    http://localhost:5000/protocols")
@@ -939,7 +939,7 @@ if __name__ == '__main__':
         print("   Add Protocol:       http://localhost:5000/add-protocol-from-file")
         print()
        
-        print("🔗 API Endpoints:")
+        print(" API Endpoints:")
         print("   All Parameters:     http://localhost:5000/parameters")
         print("   All Protocols:      http://localhost:5000/protocols")
         print("   Engine Speed Data:  http://localhost:5000/parameters/engine_speed")
@@ -947,7 +947,7 @@ if __name__ == '__main__':
         print("   Road Speed Data:    http://localhost:5000/parameters/road_speed")
         print("   Road Protocols:     http://localhost:5000/protocols/RSPD_protocols")
         print()
-        print("🧪 Test Commands:")
+        print(" Test Commands:")
         print("   curl http://localhost:5000/parameters")
         print("   curl http://localhost:5000/protocols")
         print("   curl http://localhost:5000/validate")
@@ -957,22 +957,22 @@ if __name__ == '__main__':
         print("   curl -X POST http://localhost:5000/add-parameter-from-file")
         print("   curl -X POST http://localhost:5000/add-protocol-from-file")
         print()
-        print("🎯 Features:")
-        print("   ✅ Original UI and functionality preserved")
-        print("   ✅ Enhanced validation system (JSON Schema + Custom Logic)")
-        print("   ✅ Cross-reference validation between files")
-        print("   ✅ Parameter addition from example file")
-        print("   ✅ Database auto-regeneration after changes")
-        print("   ✅ Real-time validation status")
-        print("   ✅ Professional directory structure")
-        print("   ✅ CLI validation tools available")
-        print("   ✅ Custom HTML documentation pages")
-        print("   ✅ Swagger API documentation")
-        print("   ✅ Protocol group management")
-        print("   ✅ Foreign key relationships in database")
-        print("   ✅ Team workflow support (Parameter + Protocol teams)")
+        print(" Features:")
+        print("    Original UI and functionality preserved")
+        print("    Enhanced validation system (JSON Schema + Custom Logic)")
+        print("    Cross-reference validation between files")
+        print("    Parameter addition from example file")
+        print("    Database auto-regeneration after changes")
+        print("    Real-time validation status")
+        print("    Professional directory structure")
+        print("    CLI validation tools available")
+        print("    Custom HTML documentation pages")
+        print("    Swagger API documentation")
+        print("    Protocol group management")
+        print("    Foreign key relationships in database")
+        print("    Team workflow support (Parameter + Protocol teams)")
         print("=" * 80)
         
         app.run(debug=True, host='0.0.0.0', port=5000)
     else:
-        print("❌ Failed to start application due to database errors!")
+        print(" Failed to start application due to database errors!")
