@@ -95,6 +95,10 @@ protocol_groups:
   group_name: GSPD_protocols
   id: 12
   parameter_reference: Navigation Based Vehicle Speed
+- id: 13
+  group_name: TSTA_protocols
+  description: Tire Status Protocol Definitions
+  parameter_reference: Tire Status
 protocols:
 - group_id: 1
   abbr: ESPD
@@ -334,3 +338,15 @@ protocols:
   spn: '517'
   states: null
   units: km/h
+- group_id: 13
+  abbr: TSTA
+  protocol_standard: J1939
+  pgn_pid: '65268'
+  spn: '1698'
+  precision: N/A
+  spec_range: 0 to 3
+  max_valid_val: '3'
+  units: enumeration
+  description: Indicates the status of the tire. 00b = Ok (no fault), 01b = Tire leak
+    detected, 10b = Error, 11b = Not Supported
+  states: 0=Invalid,1=Tire Status Not available,2=Tire Status OK,3=Leak Detected,4=Error

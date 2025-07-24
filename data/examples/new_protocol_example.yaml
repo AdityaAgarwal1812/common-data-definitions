@@ -1,18 +1,18 @@
 protocol_groups:
-  - id: 12
-    group_name: "GSPD_protocols"
-    description: "Navigation Based Vehicle Speed Protocol Definitions"
-    parameter_reference: "Navigation Based Vehicle Speed"
+  - id: 13
+    group_name: "TSTA_protocols"
+    description: "Tire Status Protocol Definitions"
+    parameter_reference: "Tire Status"
 
 protocols:
-  - group_id: 12
-    abbr: "GSPD"
+  - group_id: 13
+    abbr: "TSTA"
     protocol_standard: "J1939"
-    pgn_pid: "65256"
-    spn: "517"
-    precision: "1/256 km/h per bit"
-    spec_range: "0 to 250.996 km/h"
-    max_valid_val: "250.996"
-    units: "km/h"
-    description: "Speed of the vehicle as calculated from a device such as a Global Positioning System (GPS)."
-    states: null
+    pgn_pid: "65268"
+    spn: "1698"
+    precision: "N/A"
+    spec_range: "0 to 3"
+    max_valid_val: "3"
+    units: "enumeration"
+    description: "Indicates the status of the tire. 00b = Ok (no fault), 01b = Tire leak detected, 10b = Error, 11b = Not Supported"
+    states: "0=Invalid,1=Tire Status Not available,2=Tire Status OK,3=Leak Detected,4=Error"

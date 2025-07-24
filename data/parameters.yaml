@@ -173,6 +173,14 @@ parameters:
   reason_added: Safety
   reserved_enum_val: 86
   unit: km/h (kilometers per hour)
+- id: 111
+  field_name: Engine Speed New
+  reserved_enum_val: 0
+  description: Instantaneous measurement of engine rotational speed
+  unit: Double - RPM (Rotations per Minute)
+  reason_added: ELD Mandate
+  protobuf_field: speed_engine_rpm
+  protocol_reference: TSTA_protocols
 breadcrumb_fields:
 - parameter_id: 1
   breadcrumb_link: https://docs.motive.com/breadcrumb/veh_eng_spd
@@ -212,6 +220,9 @@ breadcrumb_fields:
 - breadcrumb_link: https://docs.motive.com/breadcrumb/navigation_based_vehicle_speed
   note: GPS-based vehicle speed monitoring for navigation and safety systems
   parameter_id: 19
+- parameter_id: 111
+  breadcrumb_link: https://docs.motive.com/breadcrumb/veh_tire_info
+  note: contained in a veh_tire_info message - TPMS tire status monitoring
 vg5_fields:
 - parameter_id: 1
   vg5_link: https://docs.motive.com/vg5/engine_speed_rpm
@@ -241,6 +252,8 @@ vg5_fields:
   vg5_link: https://docs.motive.com/vg5/ambient_air_temp_c
 - parameter_id: 19
   vg5_link: https://docs.motive.com/vg5/navigation_based_vehicle_speed_kph
+- parameter_id: 111
+  vg5_link: https://docs.motive.com/vg5/tire_status
 abbr_metrics:
 - parameter_id: 1
   abbr_value: ESPD
@@ -298,3 +311,7 @@ abbr_metrics:
   abbr_value: GSPD
   metrics_link: https://redash.motive.com/dashboard/navigation-based-speed
   parameter_id: 19
+- parameter_id: 111
+  abbr_value: TSTA
+  abbr_link: https://docs.motive.com/abbr/TSTA
+  metrics_link: https://redash.motive.com/dashboard/tire-status-tsta
